@@ -1,0 +1,185 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Trip</title>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<!-- Add Bootstrap CSS -->
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+	<link rel="stylesheet" href="https://pro.fontawesome.com/releases/v5.10.0/css/all.css">
+	<style type="text/css">
+		body {
+			font-family: Arial, sans-serif;
+			margin: 0;
+			padding: 0;
+		}
+		header {
+			background-color: #3f3f3f;
+			color: #fff;
+			padding: 20px;
+			text-align: center;
+		}
+		nav {
+			background-color: #f1f1f1;
+			display: flex;
+			flex-wrap: wrap;
+			padding: 10px;
+		}
+		nav a {
+			color: #333;
+			padding: 10px;
+			text-decoration: none;
+			font-weight: bold;
+			flex-grow: 1;
+			text-align: center;
+		}
+		nav a:hover {
+			background-color: #333;
+			color: #fff;
+		}
+		  .bg-image {
+    background-image: url('/bk2.jpg');
+    background-size: cover;
+    background-position: center center;
+    background-repeat: no-repeat;
+  }
+	</style>
+</head>
+<body>
+	<header>
+		<h1 style="color:black;">Trip<span style="color:white">Bots</span></h1>
+	</header>
+	<nav class="navbar navbar-expand-lg navbar-light bg-light">
+		<a class="navbar-brand" href="/h">Traveler Dashboard</a>
+		<button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+			<span class="navbar-toggler-icon"></span>
+		</button>
+		<div class="collapse navbar-collapse" id="navbarNav">
+			<ul class="navbar-nav">
+				<li class="nav-item">
+					<a class="nav-link" href="/h">Home</a>
+				</li>
+				<li class="nav-item">
+					<a class="nav-link" href="/profilet">Profile</a>
+				</li>
+				<li class="nav-item">
+					<a class="nav-link" href="/gallery">Gallery</a>
+				</li>
+       <li class="nav-item">
+					<a class="nav-link" href="/viewtablet">Viewtours</a>
+				</li>
+				<li class="nav-item active">
+					<a class="nav-link" href="/trip">Trips</a>
+				</li>
+                <li class="nav-item ">
+					<a class="nav-link" href="/book">Booking</a>
+				</li>
+				<li class="nav-item">
+					<a class="nav-link" href="/auth/logout">Logout<i class="fa fa-power-off" aria-hidden="true"></i></a>
+				</li>
+</ul>
+</div>
+</nav>
+<!-- Search box section -->
+<section class="py-5 bg-image">
+  <div class="container">
+    <div class="row">
+      <div class="col-md-6 mx-auto text-center">
+        <h2  style="color: white;">Search Available Tours</h2>
+        <form action="/trip/search" method="GET" class="d-flex justify-content-center mt-4">
+          <input type="text" name="searchTerm" placeholder="Search destination" class="form-control mr-2">
+          <button type="submit" class="btn btn-secondary">Search</button>
+        </form>
+      </div>
+    </div>
+    <h2 class="mt-5 mb-3 text-center" style="color: white;">Available Tours</h2>
+    <div class="row mt-5">
+      <div class="col-md-10 mx-auto">
+        <div class="table-responsive">
+          <table class="table table-bordered">
+            <thead class="thead-dark">
+              <tr>
+                <th scope="col">Place</th>
+                <th scope="col">Duration</th>
+                <th scope="col">Start Date</th>
+                <th scope="col">End Date</th>
+                <th scope="col">Booking</th>
+                <th scope="col">Amount</th>
+                <th scope="col">Last Date</th>
+                <th scope="col">Offer Amount</th>
+                <th scope="col">Valid Till</th>
+				        <th scope="col">Transport</th>
+              </tr>
+            </thead>
+            <tbody>
+              {{#if tours.length}}
+                {{#each tours}}
+                  <tr style="background-color: white; color: black;">
+                    <td>{{name}}</td>
+                    <td>{{duration}}</td>
+                    <td>{{date}}</td>
+                    <td>{{dateEnd}}</td>
+                    <td>{{cost}}</td>
+                    <td>{{amount}}</td>
+                    <td>{{bookingdate}}</td>
+                    <td>{{discount}}</td>
+                    <td>{{valid}}</td>
+                    <td>{{transport}}</td>
+                  </tr>
+                {{/each}}
+              {{else if searchTerm}}
+                <tr style="background-color: white; color: black;">
+                  <td class="text-center" colspan="11">NO TOURS FOUND<i class="fa fa-exclamation-triangle" aria-hidden="true"></i></td>
+                </tr>
+              {{/if}}
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+<!-- Essential Travel Accessories section -->
+<div class="py-5 bg-light" id="accessories">
+  <div class="container my-5">
+    <div class="row">
+      <div class="col-md-8 mx-auto">
+	  <h1 class="text-center mb-5"><i class="fa fa-suitcase" aria-hidden="true"></i></h1>
+        <h1 class="text-center mb-5">Essential Travel Accessories</h1>
+        <p>When packing for a trip, it's important to have the right tools and accessories to ensure a smooth and enjoyable travel experience. Here are some essential travel accessories that you should consider bringing:</p>
+        <ul>
+          <li>Passport</li>
+          <li>Travel pillow</li>
+          <li>Noise-cancelling headphones</li>
+          <li>Portable charger</li>
+          <li>Universal adapter</li>
+          <li>Reusable water bottle</li>
+          <li>Lightweight backpack</li>
+        </ul>
+        <p>Here's a more detailed list of some of the essential travel accessories:</p>
+        <dl>
+          <dt>Passport</dt>
+          <dd>Your passport is the most important document you'll need when traveling internationally. Make sure you have a valid passport that won't expire for at least six months.</dd>
+          <dt>Travel pillow</dt>
+          <dd>A travel pillow can help you get some rest during long flights or train rides. Look for one that is compact and easy to pack.</dd>
+          <dt>Noise-cancelling headphones</dt>
+          <dd>Noise-cancelling headphones can help you block out unwanted noise and distractions, making your travel experience more comfortable and relaxing.</dd>
+          <dt>Portable charger</dt>
+          <dd>A portable charger can help you keep your devices charged on the go, so you don't have to worry about running out of battery.</dd>
+          <dt>Universal adapter</dt>
+          <dd>A universal adapter can help you stay connected and charge your devices in foreign countries. Make sure to check the voltage and plug type of your destination before purchasing one.</dd>
+          <dt>Reusable water bottle</dt>
+          <dd>A reusable water bottle can help you save money and reduce waste by refilling it instead of buying bottled water. Look for one that is durable and leak-proof.</dd>
+          <dt>Lightweight backpack</dt>
+          <dd>A lightweight backpack can be a versatile and convenient way to carry your essentials while exploring your destination. Look for one that is comfortable to wear and has enough pockets and compartments to keep your belongings organized.</dd>
+        </dl>
+      </div>    
+    </div>
+  </div>
+</div>
+<!-- Add jQuery library -->
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+<!-- Add Bootstrap JS -->
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+</body>
+</html>

@@ -1,0 +1,157 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Booking</title>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<!-- Add Bootstrap CSS -->
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+	<link rel="stylesheet" href="https://pro.fontawesome.com/releases/v5.10.0/css/all.css">
+	<style type="text/css">
+		body {
+			font-family: Arial, sans-serif;
+			margin: 0;
+			padding: 0;
+		}
+		header {
+			background-color: #3f3f3f;
+			color: #fff;
+			padding: 20px;
+			text-align: center;
+		}
+		nav {
+			background-color: #f1f1f1;
+			display: flex;
+			flex-wrap: wrap;
+			padding: 10px;
+		}
+		nav a {
+			color: #333;
+			padding: 10px;
+			text-decoration: none;
+			font-weight: bold;
+			flex-grow: 1;
+			text-align: center;
+		}
+		nav a:hover {
+			background-color: #333;
+			color: #fff;
+		}
+        .bg-image {
+    background-image: url('/bk3.jpg');
+    background-size: cover;
+    background-position: center center;
+    background-repeat: no-repeat;
+  }
+	</style>
+</head>
+<body>
+	<header>
+		<h1 style="color:black;">Trip<span style="color:white">Bots</span></h1>
+	</header>
+	<nav class="navbar navbar-expand-lg navbar-light bg-light">
+		<a class="navbar-brand" href="/h">Traveler Dashboard</a>
+		<button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+			<span class="navbar-toggler-icon"></span>
+		</button>
+		<div class="collapse navbar-collapse" id="navbarNav">
+			<ul class="navbar-nav">
+				<li class="nav-item">
+					<a class="nav-link" href="/h">Home</a>
+				</li>
+				<li class="nav-item">
+					<a class="nav-link" href="/profilet">Profile</a>
+				</li>
+				<li class="nav-item">
+					<a class="nav-link" href="/gallery">Gallery</a>
+				</li>
+                <li class="nav-item active">
+					<a class="nav-link" href="/viewtablet">Viewtours</a>
+				</li>
+				<li class="nav-item">
+					<a class="nav-link" href="/trip">Trips</a>
+				</li>
+                <li class="nav-item ">
+					<a class="nav-link" href="/book">Booking</a>
+				</li>
+				<li class="nav-item">
+					<a class="nav-link" href="/auth/logout">Logout<i class="fa fa-power-off" aria-hidden="true"></i></a>
+				</li>
+</ul>
+</div>
+</nav>
+<!-- table section -->
+<section class="py-5 bg-image">
+  <div class="container">
+      <h2 class="mt-5 mb-3 text-center">Tours Details</h2>
+    <div class="row mt-5">
+      <div class="col-md-10 mx-auto">
+        <div class="table-responsive">
+          <table class="table table-bordered">
+            <thead class="thead-dark">
+              <tr>
+                <th scope="col">Place</th>
+                <th scope="col">Duration</th>
+                <th scope="col">Start Date</th>
+                <th scope="col">End Date</th>
+                <th scope="col">Booking</th>
+                <th scope="col">Amount</th>
+                <th scope="col">Last Date</th>
+                <th scope="col">Offer Amount</th>
+                <th scope="col">Valid Till</th>
+				<th scope="col">Transport</th>
+              </tr>
+            </thead>
+            <tbody>
+            {{#each tours}}
+              <tr style="background-color: white; color: black;">
+                <td>{{this.name}}</td>
+                <td>{{this.duration}}</td>
+                <td>{{this.date}}</td>
+                <td>{{this.dateEnd}}</td>
+                <td>{{this.cost}}</td>
+                <td>{{this.amount}}</td>
+                <td>{{this.bookingdate}}</td>
+                <td>{{this.discount}}</td>
+                <td>{{this.valid}}</td>
+				<td>{{this.transport}}</td>
+              </tr>
+              {{/each}}
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </div>
+    </div>
+</section>
+<!-- Fees section -->
+<div class="py-5" id="fees">
+  <div class="container my-5">
+    <div class="row">
+      <div class="col-md-8 mx-auto">
+	  <h1 class="text-center mb-5"><i class="fa fa-credit-card" aria-hidden="true"></i></h1>
+        <h1 class="text-center mb-5">Fees</h1>
+        <p>Our tour package includes the following:</p>
+        <ul>
+          <li><strong>Transport:</strong> We will provide transportation to and from the airport and all other destinations included in the itinerary.</li>
+          <li><strong>Good resort/hotel for accommodation:</strong> We will provide comfortable and well-appointed accommodation throughout the tour.</li>
+          <li><strong>Meals:</strong> All meals are included in the tour package. We will provide a variety of local and international dishes to suit all tastes.</li>
+          <li><strong>Sightseeing:</strong> We will take you to all the top tourist attractions in each destination included in the itinerary.</li>
+          <li><strong>Entrance fees:</strong> All entrance fees to tourist attractions included in the itinerary are covered by the tour package.</li>
+        </ul>
+        <p>The following items are not included in the tour package and will be at your own expense:</p>
+        <ul>
+          <li><strong>Personal Expenses:</strong> This includes items such as souvenirs, snacks, and drinks that are not included in the tour package.</li>
+          <li><strong>Anything not mentioned under package includes:</strong> If it is not specifically mentioned in the tour package, it is not included.</li>
+          <li><strong>Shopping:</strong> If you decide to shop during the tour, the cost of your purchases will be at your own expense.</li>
+        </ul>
+      </div>    
+    </div>
+  </div>
+</div>
+<!-- Add jQuery library -->
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+<!-- Add Bootstrap JS -->
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+</body>
+</html>

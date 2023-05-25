@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Login Form</title>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<!-- Add Bootstrap CSS -->
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+		<style>
+  body {
+    background-image: url('/back.jpg');
+    background-repeat: no-repeat;
+    background-size: cover;
+  }
+  	.card {
+		background-color: transparent;
+		border: none;
+	}
+ 
+</style>
+</head>
+<body>
+
+	<div class="container mt-5">
+		<div class="row justify-content-center">
+			<div class="col-md-6">
+				<div class="card">
+					<div class="card-header">
+						<h4>Login Form</h4>
+					</div>
+					<div class="card-body">
+                                <form action="/auth/login" method="POST" onsubmit="return validateForm()">
+												 {{#if message}}
+ 												<p class = "alert alert-danger mt-4">{{message}}</p>
+     											{{/if}}
+                                    <div class="form-group">
+                                        <label for="email">Email</label>
+                                        <input type="email" class="form-control" id="email" name="email" placeholder="Enter email">
+                                        <span id="emailError" style="color:red"></span>
+                                    </div>
+                                    <div class="form-group">
+                                        <label for="password">Password</label>
+                                        <input type="password" class="form-control" id="password" name="password" placeholder="Enter password">
+                                        <span id="passwordError" style="color:red"></span>
+                                    </div>
+                                    <div class="form-group">
+                                        <label for="user-type">User Type</label>
+                                        <select class="form-control" id="role" name="role">
+                                            <option>Traveler</option>
+                                            <option>Travel agent</option>
+                                        </select>
+                                        <span id="roleError" style="color:red"></span>
+                                    </div>
+									<div class="form-group">
+                                   <p style="color:white;">Dont have an account?   <button type="button" class="btn btn-secondary"><a href="/register" style="color:white;">Register</a></button></p>
+                                   </div>
+									<button type="button" class="btn btn-secondary"><a href="/"style="color:white;">Home</a></button>
+                                    <button type="submit" class="btn btn-secondary">Submit</button>
+                                </form>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+<script>
+function validateForm() {
+	var email = document.getElementById("email").value;
+	var password = document.getElementById("password").value;
+	var role = document.getElementById("role").value;
+	var emailError = document.getElementById("emailError");
+	var passwordError = document.getElementById("passwordError");
+	var roleError = document.getElementById("roleError");
+	
+	// Email validation
+	if (email == "") {
+		emailError.innerHTML = "Please enter an email";
+		return false;
+	} else {
+		emailError.innerHTML = "";
+	}
+	
+	// Password validation
+	if (password == "") {
+		passwordError.innerHTML = "Please enter a password";
+		return false;
+	} else {
+		passwordError.innerHTML = "";
+	}
+	
+	// Role validation
+	if (role == "") {
+		roleError.innerHTML = "Please select a role";
+		return false;
+	} else {
+		roleError.innerHTML = "";
+	}
+	
+	return true;
+}
+</script>
+	<!-- Add Bootstrap JS -->
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+</body>
+</html>

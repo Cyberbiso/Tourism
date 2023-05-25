@@ -1,0 +1,148 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Registration Form</title>
+	<!-- Add Bootstrap CSS -->
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+	<style>
+  body {
+    background-image: url('/back.jpg');
+    background-repeat: no-repeat;
+    background-size: cover;
+  }
+  	.card {
+		background-color: transparent;
+		border: none;
+	}
+ 
+</style>
+</head>
+<body>
+
+	<div class="container mt-5">
+		<div class="row justify-content-center">
+			<div class="col-md-6">
+				<div class="card">
+					<div class="card-header">
+						<h4>Registration Form</h4>
+					</div>
+					<div class="card-body">
+						<form id="registration-form" action="/auth/register" method="POST">
+            						{{#if message}}
+ 												<p class = "alert alert-danger mt-4">{{message}}</p>
+     											{{/if}}
+							<div class="form-group">
+								<label for="name">Name</label>
+								<input type="text" class="form-control" id="name" name="name" placeholder="Enter name">
+							</div>
+							<div class="form-group">
+								<label for="email">Email</label>
+								<input type="email" class="form-control" id="email" name="email" placeholder="Enter email">
+							</div>
+							<div class="form-group">
+								<label for="password">Password</label>
+								<input type="password" class="form-control" id="password" name="password" placeholder="Enter password">
+							</div>
+							<div class="form-group">
+								<label for="confirm_password">Confirm Password</label>
+								<input type="password" class="form-control" id="confirm_password" name="confirm_password" placeholder="Confirm password">
+							</div>
+							<div class="form-group">
+								<label for="number">Phone Number</label>
+								<input type="text" class="form-control" id="number" name="number" placeholder="Enter number">
+							</div>
+							<div class="form-group">
+								<label for="role">User Type</label>
+								<select class="form-control" id="role" name="role" >
+									<option>Traveler</option>
+									<option>Travel agent</option>
+								</select>
+							</div>
+                <div class="form-group">
+                <p style="color:white;">Already have an account?<button type="button" class="btn btn-secondary"> <a href="/login" style="color:white;">Login</a></button></p>
+                </div>
+							<button type="button" class="btn btn-secondary"><a href="/"style="color:white;">Home</a></button>
+							<button type="submit" class="btn btn-secondary">Register</button>
+						</form>
+					</div>
+				</div>
+			</div>
+		</div>
+	<!-- Valiation of form -->
+<script>
+  const form = document.getElementById('registration-form');
+  const nameInput = document.getElementById('name');
+  const emailInput = document.getElementById('email');
+  const passwordInput = document.getElementById('password');
+  const confirmPasswordInput = document.getElementById('confirm_password');
+  const numberInput = document.getElementById('number');
+  const roleInput = document.getElementById('role');
+
+  form.addEventListener('submit', (event) => {
+    // Prevent form submission
+    event.preventDefault();
+
+    // Validate name
+    if (nameInput.value === '') {
+      alert('Please enter your name');
+      nameInput.focus();
+      return false;
+    }
+
+    // Validate email
+    const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+    if (!emailRegex.test(emailInput.value)) {
+      alert('Please enter a valid email address');
+      emailInput.focus();
+      return false;
+    }
+
+    // Validate password
+    if (passwordInput.value === '') {
+      alert('Please enter a password');
+      passwordInput.focus();
+      return false;
+    }
+
+    // Validate confirm password
+    if (confirmPasswordInput.value === '') {
+      alert('Please confirm your password');
+      confirmPasswordInput.focus();
+      return false;
+    }
+
+    if (passwordInput.value !== confirmPasswordInput.value) {
+      alert('Passwords do not match');
+      confirmPasswordInput.focus();
+      return false;
+    }
+
+    // Validate number
+    if (numberInput.value === '') {
+      alert('Please enter your phone number');
+      numberInput.focus();
+      return false;
+    }
+
+    // Validate role
+    if (roleInput.value === '') {
+      alert('Please select a user type');
+      roleInput.focus();
+      return false;
+    }
+
+    // If all validation passes, submit the form
+    form.submit();
+  });
+</script>
+
+
+	<script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+	<script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.3/dist/umd/popper.min.js"
+        integrity="sha384-HAFz/XZD/H7VcdJl0u8bHm0fQ1A7v9/MWgxbl8Mktp/Oz2Lnd4x3qWU6wHJpvyua"
+        crossorigin="anonymous"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+</body>
+</html>

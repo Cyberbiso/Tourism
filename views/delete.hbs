@@ -1,0 +1,147 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Delete</title>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<!-- Add Bootstrap CSS -->
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+	<link rel="stylesheet" href="https://pro.fontawesome.com/releases/v5.10.0/css/all.css">
+	<style type="text/css">
+		body {
+			font-family: Arial, sans-serif;
+			margin: 0;
+			padding: 0;
+		}
+		header {
+			background-color: #3f3f3f;
+			color: #fff;
+			padding: 20px;
+			text-align: center;
+		}
+		nav {
+			background-color: #f1f1f1;
+			display: flex;
+			flex-wrap: wrap;
+			padding: 10px;
+		}
+		nav a {
+			color: #333;
+			padding: 10px;
+			text-decoration: none;
+			font-weight: bold;
+			flex-grow: 1;
+			text-align: center;
+		}
+		nav a:hover {
+			background-color: #333;
+			color: #fff;
+		}
+		section {
+			padding: 20px;
+			display: flex;
+			flex-wrap: wrap;
+			align-items: stretch;
+		}
+		.card {
+			background-color: #f1f1f1;
+			border-radius: 5px;
+			box-shadow: 2px 2px 5px rgba(0,0,0,0.3);
+			flex-grow: 1;
+			margin: 10px;
+			padding: 20px;
+			text-align: center;
+		}
+		.card h2 {
+			font-size: 24px;
+			margin-top: 0;
+		}
+		.card p {
+			font-size: 16px;
+			margin-bottom: 0;
+		}
+		.profile-img {
+			
+			border-radius: 50%;
+			object-fit: cover;
+		}
+		.avatar-ctn { 
+    text-align: center;
+}
+
+.avatar {
+    width: 150px;
+	height: 150px;
+    border-bottom: 1px solid rgba(0,0,0.125);
+}
+	</style>
+</head>
+<body>
+	<header>
+		<h1 style="color:black;">Trip<span style="color:white">Bots</span></h1>
+	</header>
+	<nav class="navbar navbar-expand-lg navbar-light bg-light">
+		<a class="navbar-brand" href="/a">Agent Dashboard</a>
+		<button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+			<span class="navbar-toggler-icon"></span>
+		</button>
+		<div class="collapse navbar-collapse" id="navbarNav">
+			<ul class="navbar-nav">
+				<li class="nav-item ">
+					<a class="nav-link" href="/a">Home</a>
+				</li>
+				<li class="nav-item">
+					<a class="nav-link" href="/profilea">Profile</a>
+				</li>
+				<li class="nav-item">
+					<a class="nav-link" href="/insert">Insert</a>
+				</li>
+				<li class="nav-item active">
+					<a class="nav-link" href="/delete">Delete</a>
+				</li>				
+				<li class="nav-item">
+					<a class="nav-link" href="/viewtable">View</a>
+				</li>
+				<li class="nav-item">
+					<a class="nav-link" href="/auth/logout">Logout<i class="fa fa-power-off" aria-hidden="true"></i></a>
+				</li>
+			</ul>
+		</div>
+	</nav>
+<section>
+  <div class="card">
+  <div class="avatar-ctn">
+    <img src="/avt.png" class="avatar" alt="user profile picture" />
+	</div>
+    <h2>{{user.name}}</h2>
+    <p>Travel Agent</p>
+  </div>
+  <div class="card">
+    <h2>Delete a Trip</h2>
+<form action="auth/delete" method="POST">
+  <label for="tourName">Select a tour to delete:</label>
+  <select name="tourName" id="tourName">
+    {{#each tours}}
+    <option value="{{this.name}}">{{this.name}}</option>
+    {{/each}}
+  </select>
+  <button type="submit">Delete</button>
+</form>
+
+  </div>
+  <div class="card">
+    <h2>Contact Info</h2>
+    <p>Email: {{user.email}}</p>
+    <p>Phone: {{user.number}}</p>
+  </div>
+</section>
+<!-- Add jQuery library -->
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+<!-- Add Bootstrap JS -->
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+</body>
+</html>
+
+
+
+

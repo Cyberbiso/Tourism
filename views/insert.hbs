@@ -1,0 +1,296 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Insert</title>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<!-- Add Bootstrap CSS -->
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+	<link rel="stylesheet" href="https://pro.fontawesome.com/releases/v5.10.0/css/all.css">
+	<style type="text/css">
+		body {
+			font-family: Arial, sans-serif;
+			margin: 0;
+			padding: 0;
+		}
+		header {
+			background-color: #3f3f3f;
+			color: #fff;
+			padding: 20px;
+			text-align: center;
+		}
+		nav {
+			background-color: #f1f1f1;
+			display: flex;
+			flex-wrap: wrap;
+			padding: 10px;
+		}
+		nav a {
+			color: #333;
+			padding: 10px;
+			text-decoration: none;
+			font-weight: bold;
+			flex-grow: 1;
+			text-align: center;
+		}
+		nav a:hover {
+			background-color: #333;
+			color: #fff;
+		}
+		section {
+			padding: 20px;
+			display: flex;
+			flex-wrap: wrap;
+			align-items: stretch;
+		}
+		.card {
+			background-color: #f1f1f1;
+			border-radius: 5px;
+			box-shadow: 2px 2px 5px rgba(0,0,0,0.3);
+			flex-grow: 1;
+			margin: 10px;
+			padding: 20px;
+			text-align: center;
+		}
+		.card h2 {
+			font-size: 24px;
+			margin-top: 0;
+		}
+		.card p {
+			font-size: 16px;
+			margin-bottom: 0;
+		}
+		.profile-img {
+			
+			border-radius: 50%;
+			object-fit: cover;
+		}
+		.avatar-ctn { 
+    text-align: center;
+}
+
+.avatar {
+    width: 150px;
+	height: 150px;
+    border-bottom: 1px solid rgba(0,0,0.125);
+}
+	</style>
+</head>
+<body>
+	<header>
+		<h1 style="color:black;">Trip<span style="color:white">Bots</span></h1>
+	</header>
+	<nav class="navbar navbar-expand-lg navbar-light bg-light">
+		<a class="navbar-brand" href="/a">Agent Dashboard</a>
+		<button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+			<span class="navbar-toggler-icon"></span>
+		</button>
+		<div class="collapse navbar-collapse" id="navbarNav">
+			<ul class="navbar-nav">
+				<li class="nav-item ">
+					<a class="nav-link" href="/a">Home</a>
+				</li>
+				<li class="nav-item">
+					<a class="nav-link" href="/profilea">Profile</a>
+				</li>
+				<li class="nav-item active">
+					<a class="nav-link" href="/Insert">Insert</a>
+				</li>
+				<li class="nav-item">
+					<a class="nav-link" href="/delete">Delete</a>
+				</li>				
+				<li class="nav-item">
+					<a class="nav-link" href="/viewtable">View</a>
+				</li>
+				<li class="nav-item">
+					<a class="nav-link" href="/auth/logout">Logout<i class="fa fa-power-off" aria-hidden="true"></i></a>
+				</li>
+			</ul>
+		</div>
+	</nav>
+<section>
+  <div class="card">
+  <div class="avatar-ctn">
+    <img src="/avt.png" class="avatar" alt="user profile picture" />
+	</div>
+    <h2>{{user.name}}</h2>
+    <p>Travel Agent</p>
+  </div>
+   <div class="card">
+    <h2>Insert Travel Details</h2>
+	 {{#if message}}
+	<p class = "alert alert-danger mt-4">{{message}}</p>
+	{{/if}}
+<form id="trip-form" action="/auth/insert" method="POST">
+  <div class="form-group">
+    <label for="tour-place">Tour Place Name:</label>
+    <input type="text" class="form-control" id="tour-place" name="tourPlace" placeholder="Enter the tour place name" required>
+  </div>
+  <div class="form-group">
+    <label for="tour-duration">Tour Duration:</label>
+    <div class="form-check">
+      <input class="form-check-input" type="checkbox" id="tour-duration-3" name="tourDuration" value="3 days">
+      <label class="form-check-label" for="tour-duration-3">
+        3 Days
+      </label>
+    </div>
+    <div class="form-check">
+      <input class="form-check-input" type="checkbox" id="tour-duration-5" name="tourDuration" value="5 days">
+      <label class="form-check-label" for="tour-duration-5">
+        5 Days
+      </label>
+    </div>
+    <div class="form-check">
+      <input class="form-check-input" type="checkbox" id="tourDuration-7" name="tour-duration" value="7 days">
+      <label class="form-check-label" for="tour-duration-7">
+        7 Days
+      </label>
+    </div>
+  </div>
+  <div class="form-group">
+    <label for="tour-date">Tour Date:</label>
+    <input type="date" class="form-control" id="tour-date" name="tourDate" required>
+  </div>
+  <div class="form-group">
+    <label for="tour-date-end">Tour Date End:</label>
+    <input type="date" class="form-control" id="tour-date-end" name="tourDateEnd" required>
+  </div>
+  <div class="form-group">
+    <label for="tour-cost">Tour Cost:</label>
+    <input type="number" class="form-control" id="tour-cost" name="tourCost" placeholder="Enter the tour cost" required>
+  </div>
+  <div class="form-group">
+    <label for="amount">Amount with VAT:</label>
+    <input type="number" class="form-control" id="amount" name="amount" placeholder="Enter the amount" required>
+  </div>
+  <div class="form-group">
+    <label for="last-date">Last Booking Date:</label>
+    <input type="date" class="form-control" id="last-date" name="lastDate" required>
+  </div>
+  <div class="form-group">
+    <label for="offer-amount">Discount Offer Amount:</label>
+    <input type="number" class="form-control" id="offer-amount" name="offerAmount" placeholder="Enter the offer amount">
+  </div>
+  <div class="form-group">
+    <label for="valid-till">Valid Till:</label>
+    <input type="date" class="form-control" id="valid-till" name="validTill" placeholder="Enter the valid till date">
+  </div>
+  <div class="form-group">
+    <label for="transport">Transport:</label>
+    <div class="form-check">
+      <input class="form-check-input transport-option" type="checkbox" id="transport-car" name="transport" value="car">
+      <label class="form-check-label" for="transport-car">
+        Car
+      </label>
+    </div>
+    <div class="form-check">
+      <input class="form-check-input transport-option" type="checkbox" id="transport-train" name="transport" value="train">
+      <label class="form-check-label" for="transport-train">
+        Train
+      </label>
+    </div>
+    <div class="form-check">
+      <input class="form-check-input transport-option" type="checkbox" id="transport-bus" name="transport" value="bus">
+      <label class="form-check-label" for="transport-bus">
+        Bus
+      </label>
+    </div>
+  </div>
+			  <button type="submit" class="btn btn-secondary">Submit</button>
+			</form>
+  </div>
+    <div class="card">
+    <h2>Contact Info</h2>
+    <p>Email: {{user.email}}</p>
+    <p>Phone: {{user.number}}</p>
+  </div>
+</section>
+<!-- form validation --> 
+<!-- form validation 
+<script>
+const form = document.getElementById('trip-form');
+const tourPlace = document.getElementById('tour-place');
+const tourDuration = document.querySelectorAll('input[name="tour-duration"]:checked');
+const tourDate = document.getElementById('tour-date');
+const tourDateEnd = document.getElementById('tour-date-end');
+const tourCost = document.getElementById('tour-cost');
+const amount = document.getElementById('amount');
+const lastDate = document.getElementById('last-date');
+const transportOptions = document.querySelectorAll('.transport-option');
+
+form.addEventListener('submit', (event) => {
+  let isFormValid = true;
+
+  if (!tourPlace.value) {
+    isFormValid = false;
+    alert('Please enter the tour place name');
+  }
+
+  if (tourDuration.length === 0) {
+    isFormValid = false;
+    alert('Please select a tour duration');
+  }
+
+  if (!tourDate.value) {
+    isFormValid = false;
+    alert('Please enter the tour start date');
+  }
+
+  if (!tourDateEnd.value) {
+    isFormValid = false;
+    alert('Please enter the tour end date');
+  } else if (new Date(tourDateEnd.value) < new Date(tourDate.value)) {
+    isFormValid = false;
+    alert('Tour end date must be after tour start date');
+  }
+
+  if (!tourCost.value) {
+    isFormValid = false;
+    alert('Please enter the tour cost');
+  } else if (tourCost.value <= 0) {
+    isFormValid = false;
+    alert('Tour cost must be greater than zero');
+  }
+
+  if (!amount.value) {
+    isFormValid = false;
+    alert('Please enter the amount');
+  } else if (amount.value <= 0) {
+    isFormValid = false;
+    alert('Amount must be greater than zero');
+  }
+
+  if (!lastDate.value) {
+    isFormValid = false;
+    alert('Please enter the last booking date');
+  } else if (new Date(lastDate.value) < new Date()) {
+    isFormValid = false;
+    alert('Last booking date must be in the future');
+  }
+
+  let transportSelected = false;
+  for (let i = 0; i < transportOptions.length; i++) {
+    if (transportOptions[i].checked) {
+      transportSelected = true;
+      break;
+    }
+  }
+  if (!transportSelected) {
+    isFormValid = false;
+    alert('Please select at least one mode of transport');
+  }
+
+  if (!isFormValid) {
+    event.preventDefault();
+  }
+});
+
+</script>
+-->
+<!-- Add jQuery library -->
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+<!-- Add Bootstrap JS -->
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+
+</body>
+</html>
